@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Odnoklassniki Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="b-site-wrap">
+            <section class="b-info b-info_user">
+                <h1 class="b-info__header">
+                    О себе
+                </h1>
+                <h2 class="b-subheader">
+                    <span class="b-subheader__text">Хобби</span> 
+                    <span class="b-subheader__line"></span>
+                </h2>
+                <div class="b-user-addinterest">
+                    <input id="add_interest" class="b-user-addinterest__input" type="text" placeholder="Введите текст"/>
+                    <span class="b-user-addinterest__alert" id="info_add_alert"></span>
+                </div>
+                <ul class="b-interest-list" id="user_interests">
+                </ul>
+                <a href="" class="b-info__more">еще 3 интереса</a>
+            </section>
+            <section class="b-info">
+                <h1 class="b-info__header">
+                    Интересы друга
+                </h1>
+                <h2 class="b-subheader">
+                    <span class="b-subheader__text">Хобби</span>
+                    <span class="b-subheader__line"></span>
+                </h2>
+                <ul class="info_list friend" id="friend_interests">
+                </ul>
+                <a href="" class="b-info__more">еще 3 интереса</a>
+            </section>
+        </div>
+        <div class="b-popup-cover">
+            <div class="b-popup">
+                <a href="" class="b-popup__close">закрыть</a>
+                <div class="b-popup__text">
+                    Ваша жалоба на: <div class="b-popup__interest-name"></div> принята.
+                </div>
+            </div>
+        </div>
+        <script src="js/site.js" type="text/javascript"></script>
+    </body>
+</html>
