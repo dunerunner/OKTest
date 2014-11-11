@@ -30,7 +30,7 @@ $(document).ready(function () {
         });
     }
     function addFriendInterest(name, element) {
-        for (var i = 0; i < my_interests.length; i++) {
+        for (var i = 0, len = my_interests.length; i < len; i++) {
             if (my_interests[i] === name) {
                 alert('Интерес уже есть в Вашем списке!');
                 return;
@@ -118,7 +118,7 @@ $(document).ready(function () {
             addInterest($.trim(interest_input.val()));
         }
     });
-    
+
     generateMyInterestList();
     generateFriendInterestList();
 
