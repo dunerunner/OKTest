@@ -7,7 +7,7 @@ $(document).ready(function () {
             $('#info_add_alert').text('Поле ввода пустое!');
             return;
         }
-        for (var i = 0; i < my_interests.length; i++) {
+        for (var i = 0, len = my_interests.length; i < len; i++) {
             if (my_interests[i] === name) {
                 $('#info_add_alert').text('Интерес уже добавлен!');
                 return;
