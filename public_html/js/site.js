@@ -98,6 +98,7 @@ $(document).ready(function () {
         $(".b-popup-cover").fadeOut(500);
     });
     $('#user_interests').on('mouseenter mouseleave', '.b-interest-list__element', function () {
+        //This can be done with pure CSS
         $(this).find('.b-interest__control').toggleClass('b-interest__control_del');
     });
     $('#user_interests').on('click', '.b-interest-list__element', function (e) {
@@ -109,6 +110,7 @@ $(document).ready(function () {
         }
     });
     $('#friend_interests').on('mouseenter mouseleave', '.b-interest-list__element', function () {
+        //This can be done with pure CSS
         if (!$(this).hasClass('added')) {
             $(this).find('.b-interest__control').toggleClass('b-interest__control_add').end()
                     .find('.b-interest__complain').toggleClass('b-interest__complain_hidden').end()
