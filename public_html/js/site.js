@@ -37,61 +37,66 @@ $(document).ready(function () {
                         .appendTo(interest_name);
             }
         };
-        return {
-            addInterest: function (name) {
-                if (name.length < 1) {
-                    $(config.addAlertElement).text('Поле ввода пустое!');
-                    return;
-                }
-                for (var i = 0, len = my_interests.length; i < len; i++) {
-                    if (my_interests[i] === name) {
-                        $(config.addAlertElement).text('Интерес уже добавлен!');
-                        return;
-                    }
-                }
-                my_interests.push(name);
-                var my_list = $(config.userInterestBlock);
-                _generateInterest(my_list, name, true);
-                $(config.addInterestControl).val('');
-                $(config.addAlertElement).text('');
-            },
-            removeInterest: function (index) {
-                my_interests.splice(index, 1);
-                var to_remove = $(config.userInterestBlock + ' ' + config.interestListElement)[index];
-                to_remove.remove();
-            },
-            addFriendInterest: function (name, element) {
-                for (var i = 0, len = my_interests.length; i < len; i++) {
-                    if (my_interests[i] === name) {
-                        alert('Интерес уже есть в Вашем списке!');
-                        return;
-                    }
-                }
-                my_interests.push(name);
-                var my_list = $(config.userInterestBlock);
-                _generateInterest(my_list, name, true);
-
-                $(element).addClass('added')
-                        .find('.b-interest__name').toggleClass('active').end()
-                        .find('.b-interest__control').toggle().end()
-                        .find('.b-interest__added').toggleClass('b-interest__added_hidden').end()
-                        .find('.b-interest__complain').toggleClass('b-interest__complain_hidden').end();
-            },
-            complainAboutInterest: function (name) {
-                $('.b-popup__interest-name').text('"' + name + '"');
-                $(".b-popup-cover").fadeIn(500);
-            },
-            populateInterests: function (interestsArr, list, isOwn) {
-                if (!list.length) {
-                    console.error('Empty list element!');
-                    return;
-                }
-                var frag = document.createDocumentFragment();
-                interestsArr.forEach(function (element) {
-                    _generateInterest(frag, element, isOwn);
-                });
-                list[0].appendChild(frag);
+        var addInterest = function (name) {
+            if (name.length < 1) {
+                $(config.addAlertElement).text('Поле ввода пустое!');
+                return;
             }
+            for (var i = 0, len = my_interests.length; i < len; i++) {
+                if (my_interests[i] === name) {
+                    $(config.addAlertElement).text('Интерес уже добавлен!');
+                    return;
+                }
+            }
+            my_interests.push(name);
+            var my_list = $(config.userInterestBlock);
+            _generateInterest(my_list, name, true);
+            $(config.addInterestControl).val('');
+            $(config.addAlertElement).text('');
+        };
+        var removeInterest = function (index) {
+            my_interests.splice(index, 1);
+            var to_remove = $(config.userInterestBlock + ' ' + config.interestListElement)[index];
+            to_remove.remove();
+        };
+        var addFriendInterest = function (name, element) {
+            for (var i = 0, len = my_interests.length; i < len; i++) {
+                if (my_interests[i] === name) {
+                    alert('Интерес уже есть в Вашем списке!');
+                    return;
+                }
+            }
+            my_interests.push(name);
+            var my_list = $(config.userInterestBlock);
+            _generateInterest(my_list, name, true);
+
+            $(element).addClass('added')
+                    .find('.b-interest__name').toggleClass('active').end()
+                    .find('.b-interest__control').toggle().end()
+                    .find('.b-interest__added').toggleClass('b-interest__added_hidden').end()
+                    .find('.b-interest__complain').toggleClass('b-interest__complain_hidden').end();
+        };
+        var complainAboutInterest = function (name) {
+            $('.b-popup__interest-name').text('"' + name + '"');
+            $(".b-popup-cover").fadeIn(500);
+        };
+        var populateInterests = function (interestsArr, list, isOwn) {
+            if (!list.length) {
+                console.error('Empty list element!');
+                return;
+            }
+            var frag = document.createDocumentFragment();
+            interestsArr.forEach(function (element) {
+                _generateInterest(frag, element, isOwn);
+            });
+            list[0].appendChild(frag);
+        };
+        return {
+            addInterest: addInterest,
+            removeInterest: removeInterest,
+            addFriendInterest: addFriendInterest,
+            complainAboutInterest: complainAboutInterest,
+            populateInterests: populateInterests
         };
     })();
 
